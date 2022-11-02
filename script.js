@@ -8,12 +8,15 @@ const btnRock = document.querySelector('.rock')
 const btnPaper = document.querySelector('.paper')
 const btnScissors = document.querySelector('.scissors')
 const resultField = document.querySelector('.result-container')
+let para = document.createElement('p');
 let scoreFieldPlayer = document.querySelector('.player-score')
 let scoreFieldComputer = document.querySelector('.computer-score')
 
+let computerScore = 0;
+let playerScore = 0;
+
 btnRock.addEventListener('click', (e) => {
     let results = round('Rock', getComputerChoice())
-    console.log(e.target.textContent)
     writeResultToDom(results)
     calculateScore(results)
 
@@ -21,14 +24,12 @@ btnRock.addEventListener('click', (e) => {
 
 btnPaper.addEventListener('click', (e) => {
     let results = round('Paper', getComputerChoice())
-    console.log(e.target.textContent)
     writeResultToDom(results)
     calculateScore(results)
 })
 
 btnScissors.addEventListener('click', (e) => {
     let results = round('Scissors', getComputerChoice())
-    console.log(e.target.textContent)
     writeResultToDom(results)
     calculateScore(results)
 })
@@ -38,42 +39,23 @@ function round(playerSelection, computerSelection) {
     let fixedPlayerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
     
     console.log(computerSelection + ' this is the comp selection ' + fixedPlayerSelection + ' this is player')
-    //     if (fixedPlayerSelection === 'Rock' && computerSelection === 'Rock' || fixedPlayerSelection === 'Paper' && computerSelection === 'Paper' || fixedPlayerSelection === 'Scissors' && computerSelection === 'Scissors') {
-    //     return 'Its a tie!'
-        
-    // } else if (fixedPlayerSelection === 'Rock' && computerSelection === 'Scissors') {
-    //     return 'You win! Rock beats Scissors'
-    // } else if (fixedPlayerSelection === 'Scissors' && computerSelection === 'Paper' ) {
-    //     return 'You win! Scissors beats Paper'
-    // } else if (fixedPlayerSelection === 'Paper' && computerSelection === 'Rock') {
-    //     return 'You win! Paper beats Rock'
-    // } else if (computerSelection === 'Rock' && fixedPlayerSelection === 'Scissors') {
-    //         return 'You lose. Rock beats Scissors'
-    // } else if (computerSelection === 'Scissors' && fixedPlayerSelection === 'Paper' ) {
-    //     return 'You lose! Scissors beats Paper'
-    // } else if (computerSelection === 'Paper' && fixedPlayerSelection === 'Rock') {
-    //     return 'You lose! Paper beats Rock'
-    // } 
     let answer = {  playerSelection: playerSelection, 
                     computerSelection: computerSelection
                  }
     return answer;
-    
 }
 
 function writeResultToDom(result) {
-    let para = document.createElement('p');
+    
     para.textContent = `Player: ${result.playerSelection} Computer: ${result.computerSelection}`
     console.log(para);
     resultField.appendChild(para);
 }
 
-let computerScore = 0;
-let playerScore = 0;
 
 function calculateScore(result) {
 
-          if (result.playerSelection === 'Rock' && result.computerSelection === 'Rock' || result.playerSelection === 'Paper' && result.computerSelection === 'Paper' || result.playerSelection === 'Scissors' && result.computerSelection === 'Scissors') {
+    if (result.playerSelection === 'Rock' && result.computerSelection === 'Rock' || result.playerSelection === 'Paper' && result.computerSelection === 'Paper' || result.playerSelection === 'Scissors' && result.computerSelection === 'Scissors') {
         return
         
     } else if (result.playerSelection === 'Rock' && result.computerSelection === 'Scissors') {
@@ -96,6 +78,13 @@ function calculateScore(result) {
             computerScore++
             scoreFieldComputer.textContent = computerScore
     } 
+
+    if (computerScore === 5) {
+        para.textContent = 'Computer wins!'
+    } else if (playerScore === 5) {
+        para.textContent = 'Player wins!'
+    }
+
 }
 
 function game() {
