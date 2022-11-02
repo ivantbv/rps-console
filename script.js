@@ -11,6 +11,10 @@ const resultField = document.querySelector('.result-container')
 const compBtnRock = document.querySelector('.computer-rock')
 const compBtnPaper = document.querySelector('.computer-paper')
 const compBtnScissors = document.querySelector('.computer-scissors')
+const playerChoiceDiv = document.querySelector('.playerChoice')
+const tieWinOrLose = document.querySelector('.tieWinOrLose')
+const computerChoiceDiv = document.querySelector('.compChoice')
+const resetBtn = document.querySelector('.reset')
 let para = document.createElement('p');
 let scoreFieldPlayer = document.querySelector('.player-score')
 let scoreFieldComputer = document.querySelector('.computer-score')
@@ -84,8 +88,21 @@ function round(playerSelection, computerSelection) {
 function writeResultToDom(result) {
     
     para.textContent = `Player: ${result.playerSelection} Computer: ${result.computerSelection}`
-    console.log(para);
-    resultField.appendChild(para);
+    if (result.playerSelection === 'Rock' && result.computerSelection === 'Rock' || result.playerSelection === 'Paper' && result.computerSelection === 'Paper' || result.playerSelection === 'Scissors' && result.computerSelection === 'Scissors') {
+        playerChoiceDiv.textContent = `${result.playerSelection}`
+        tieWinOrLose.textContent = 'TIES'
+        computerChoiceDiv.textContent = `${result.computerSelection}`
+    } else if (result.playerSelection === 'Rock' && result.computerSelection === 'Scissors' || result.playerSelection === 'Scissors' && result.computerSelection === 'Paper' || result.playerSelection === 'Paper' && result.computerSelection === 'Rock') {
+        playerChoiceDiv.textContent = `${result.playerSelection}`
+        tieWinOrLose.textContent = 'BEATS'
+        computerChoiceDiv.textContent = `${result.computerSelection}`
+
+    } else {
+        playerChoiceDiv.textContent = `${result.playerSelection}`
+        tieWinOrLose.textContent = 'LOSES TO'
+        computerChoiceDiv.textContent = `${result.computerSelection}`
+    }
+    //resultField.appendChild(para);
 }
 
 
@@ -117,32 +134,37 @@ function calculateScore(result) {
 
     if (computerScore === 5) {
         para.textContent = 'Computer wins!'
+        playerChoiceDiv.textContent = ''
+        tieWinOrLose.textContent = ''
+        computerChoiceDiv.textContent = ''
+        resultField.appendChild(para);
 
     } else if (playerScore === 5) {
         para.textContent = 'Player wins!'
+        playerChoiceDiv.textContent = ''
+        tieWinOrLose.textContent = ''
+        computerChoiceDiv.textContent = ''
+        resultField.appendChild(para);
     }
 
 }
 
-function game() {
-    let computerWins = 0;
-    let playerWins = 0;
-    // for(let i = 0; i < 5; i++) {
-    //     let fiveRounds = round(prompt('Rock, paper or scissors?'), getComputerChoice())
-    //     if (fiveRounds.indexOf('You win') !== -1) {
-    //         playerWins++
-    //         console.log(playerWins + ' player score. \n Comp score: ' + computerWins)
-    //     } else if (fiveRounds.indexOf('You lose') !== -1) {
-    //         computerWins++
-    //         console.log(playerWins + ' player score. \n Comp score: ' + computerWins)
-    //     }
-    // }
+function resetGame() {
+    computerScore = 0;
+    playerScore = 0;
+    scoreFieldPlayer.textContent = ''
+    scoreFieldComputer.textContent = '';
+    para.textContent = ''
+    compBtnRock.classList.remove('choiceHighlight')
+    compBtnPaper.classList.remove('choiceHighlight')
+    compBtnScissors.classList.remove('choiceHighlight')
+    btnRock.classList.remove('choiceHighlight')
+    btnScissors.classList.remove('choiceHighlight')
+    btnPaper.classList.remove('choiceHighlight')
+    btnRock.addEventListener('click', handleClickRock)
+    btnPaper.addEventListener('click', handleClickPaper)
+    btnScissors.addEventListener('click', handleClickScissors)
 
-    if (computerWins > playerWins) {
-        alert('Comp won')
-    } else if (computerWins < playerWins) {
-        alert('player won')
-    } else {
-        alert('Its a tie!')
-    }
 }
+
+resetBtn.addEventListener('click', resetGame)

@@ -7,6 +7,8 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <h1>Rock, Paper, Scissors</h1>
+    <h3>Best of Five</h3>
     <div class="player-selection">
         <img src="/images/rock.png" alt="Rock" class="btn rock">
         <img src="/images/paper.png" alt="Paper" class="btn paper">
@@ -15,21 +17,26 @@
         <button class="btn paper">Paper</button>
         <button class="btn scissors">Scissors</button> -->
     </div>
-
-    <div class="result-container">
-
-
-        <div class="score">
-            <span>Player:</span> <span class="player-score"></span> <br>
-            <span>Computer:</span> <span class="computer-score"></span>
-        </div>
+    <div class="score">
+        <span>Player score:</span> <span class="player-score"></span> <br>
+        
     </div>
-
+    <div class="result-container">
+        <div class="playerChoice"></div>
+        <div class="tieWinOrLose"></div>
+        <div class="compChoice"></div>
+ 
+    </div>
+    <div class="score">
+        <span>Bot score:</span> <span class="computer-score"></span>
+    </div>
     <div class="computer-selection">
         <img src="/images/robo-rock.png" alt="Rock" class="btn computer-rock">
         <img src="/images/robo-hand.png" alt="Paper" class="btn computer-paper">
         <img src="/images/robo-scissor.png" alt="Scissors" class="btn computer-scissors">
     </div>
+
+    <button class="reset">Start new game</button>
     <script src="script.js"></script>
 </body>
 </html>
