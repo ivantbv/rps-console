@@ -3,3 +3,13 @@
     height: 200px;
     background: rgba(208, 221, 94, 0.555);
 }
+
+.btn {
+    width: 100px;
+}
+
+.choiceHighlight {
+    border: rgb(233 96 34) solid 3px;
+    background: #ffefda;
+    border-radius: 6px;
+}

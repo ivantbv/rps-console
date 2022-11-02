@@ -15,30 +15,50 @@ let scoreFieldComputer = document.querySelector('.computer-score')
 let computerScore = 0;
 let playerScore = 0;
 
-btnRock.addEventListener('click', (e) => {
-    let results = round('Rock', getComputerChoice())
+function choicesClick(choice) {
+    let results = round(choice, getComputerChoice())
     writeResultToDom(results)
     calculateScore(results)
 
-})
 
-btnPaper.addEventListener('click', (e) => {
-    let results = round('Paper', getComputerChoice())
-    writeResultToDom(results)
-    calculateScore(results)
-})
+    if (computerScore >= 5 || playerScore >= 5) {
+        btnRock.removeEventListener('click', handleClickRock)
+        btnPaper.removeEventListener('click', handleClickPaper)
+        btnScissors.removeEventListener('click', handleClickScissors)
+    }
+}
 
-btnScissors.addEventListener('click', (e) => {
-    let results = round('Scissors', getComputerChoice())
-    writeResultToDom(results)
-    calculateScore(results)
-})
+function handleClickRock() {
+    choicesClick('Rock')
+    btnScissors.classList.remove('choiceHighlight')
+    btnPaper.classList.remove('choiceHighlight')
+    btnRock.classList.add('choiceHighlight')
+}
+
+function handleClickPaper() {
+    choicesClick('Paper')
+    btnScissors.classList.remove('choiceHighlight')
+    btnRock.classList.remove('choiceHighlight')
+    btnPaper.classList.add('choiceHighlight')
+}
+function handleClickScissors() {
+    btnPaper.classList.remove('choiceHighlight')
+    btnRock.classList.remove('choiceHighlight')
+    btnScissors.classList.add('choiceHighlight')
+    choicesClick('Scissors')
+}
+
+btnRock.addEventListener('click', handleClickRock)
+
+btnPaper.addEventListener('click', handleClickPaper)
+
+btnScissors.addEventListener('click', handleClickScissors)
 
 function round(playerSelection, computerSelection) {
     
-    let fixedPlayerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
+    //let fixedPlayerSelection = playerSelection[0].toUpperCase() + playerSelection.slice(1).toLowerCase()
     
-    console.log(computerSelection + ' this is the comp selection ' + fixedPlayerSelection + ' this is player')
+    //console.log(computerSelection + ' this is the comp selection ' + fixedPlayerSelection + ' this is player')
     let answer = {  playerSelection: playerSelection, 
                     computerSelection: computerSelection
                  }
@@ -81,6 +101,7 @@ function calculateScore(result) {
 
     if (computerScore === 5) {
         para.textContent = 'Computer wins!'
+
     } else if (playerScore === 5) {
         para.textContent = 'Player wins!'
     }
