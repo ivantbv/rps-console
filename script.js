@@ -8,6 +8,9 @@ const btnRock = document.querySelector('.rock')
 const btnPaper = document.querySelector('.paper')
 const btnScissors = document.querySelector('.scissors')
 const resultField = document.querySelector('.result-container')
+const compBtnRock = document.querySelector('.computer-rock')
+const compBtnPaper = document.querySelector('.computer-paper')
+const compBtnScissors = document.querySelector('.computer-scissors')
 let para = document.createElement('p');
 let scoreFieldPlayer = document.querySelector('.player-score')
 let scoreFieldComputer = document.querySelector('.computer-score')
@@ -17,6 +20,19 @@ let playerScore = 0;
 
 function choicesClick(choice) {
     let results = round(choice, getComputerChoice())
+    if (results.computerSelection === 'Rock') {
+        compBtnScissors.classList.remove('choiceHighlight')
+        compBtnPaper.classList.remove('choiceHighlight')
+        compBtnRock.classList.add('choiceHighlight')
+    } else if (results.computerSelection === 'Paper') {
+        compBtnScissors.classList.remove('choiceHighlight')
+        compBtnRock.classList.remove('choiceHighlight')
+        compBtnPaper.classList.add('choiceHighlight')
+    } else if (results.computerSelection === 'Scissors') {
+        compBtnPaper.classList.remove('choiceHighlight')
+        compBtnRock.classList.remove('choiceHighlight')
+        compBtnScissors.classList.add('choiceHighlight')
+    }
     writeResultToDom(results)
     calculateScore(results)
 
