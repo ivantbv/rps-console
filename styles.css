@@ -17,6 +17,19 @@ h3 {
     margin-top: 0;
 }
 
+.wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    align-self: center;
+}
+
+.avatar-img {
+    width: 100px;
+}
+
 .result-container {
     font-family: arial;
     width: 400px;
@@ -46,6 +59,8 @@ h3 {
     width: 100px;
 }
 
+
+
 .score {
     font-size: 25px;
 }
@@ -56,6 +71,7 @@ h3 {
     border-radius: 8px;
     padding: 15px 42px;
     margin-bottom: 10px;
+    margin-left: 3px;
 }
 
 .choiceHighlight {
