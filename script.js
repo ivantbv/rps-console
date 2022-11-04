@@ -15,6 +15,8 @@ const playerChoiceDiv = document.querySelector('.playerChoice')
 const tieWinOrLose = document.querySelector('.tieWinOrLose')
 const computerChoiceDiv = document.querySelector('.compChoice')
 const resetBtn = document.querySelector('.reset')
+const playerName = document.querySelector('.player-name')
+const computerName = document.querySelector('.bot-name')
 let para = document.createElement('p');
 let scoreFieldPlayer = document.querySelector('.player-score')
 let scoreFieldComputer = document.querySelector('.computer-score')
@@ -133,14 +135,14 @@ function calculateScore(result) {
     } 
 
     if (computerScore === 5) {
-        para.textContent = 'Computer wins!'
+        para.textContent = `${computerName.textContent} wins!`
         playerChoiceDiv.textContent = ''
         tieWinOrLose.textContent = ''
         computerChoiceDiv.textContent = ''
         resultField.appendChild(para);
 
     } else if (playerScore === 5) {
-        para.textContent = 'Player wins!'
+        para.textContent = `${playerName.textContent} wins!`
         playerChoiceDiv.textContent = ''
         tieWinOrLose.textContent = ''
         computerChoiceDiv.textContent = ''
