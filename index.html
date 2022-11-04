@@ -8,27 +8,23 @@
 </head>
 <body>
     <h1>Rock, Paper, Scissors</h1>
-    <h3>Best of Five</h3>
     <div class="player-selection">
         <img src="/images/rock.png" alt="Rock" class="btn rock">
         <img src="/images/paper.png" alt="Paper" class="btn paper">
         <img src="/images/scissors.png" alt="Scissors" class="btn scissors">
-        <!-- <button class="btn rock">Rock</button>
-        <button class="btn paper">Paper</button>
-        <button class="btn scissors">Scissors</button> -->
     </div>
     <div class="score">
-        <span>Player score:</span> <span class="player-score"></span> <br>
+        <span class="player-name">Player</span> <span>score:</span> <span class="player-score">0</span> <br>
         
     </div>
     <div class="result-container">
         <div class="playerChoice"></div>
-        <div class="tieWinOrLose"></div>
+        <div class="tieWinOrLose">Best of Five</div>
         <div class="compChoice"></div>
  
     </div>
     <div class="score">
-        <span>Bot score:</span> <span class="computer-score"></span>
+        <span class="bot-name">Bot</span> <span>score:</span> <span class="computer-score">0</span>
     </div>
     <div class="computer-selection">
         <img src="/images/robo-rock.png" alt="Rock" class="btn computer-rock">
@@ -38,5 +34,6 @@
 
     <button class="reset">Start new game</button>
     <script src="script.js"></script>
+    <script src="https://bot.jaicp.com/chatwidget/GSrorjQb:1bb9800a1e279a54ae0fce79f05fe7b261d22202/justwidget.js" async></script>
 </body>
 </html>

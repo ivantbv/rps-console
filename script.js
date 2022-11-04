@@ -87,7 +87,7 @@ function round(playerSelection, computerSelection) {
 
 function writeResultToDom(result) {
     
-    para.textContent = `Player: ${result.playerSelection} Computer: ${result.computerSelection}`
+    //para.textContent = `Player: ${result.playerSelection} Computer: ${result.computerSelection}`
     if (result.playerSelection === 'Rock' && result.computerSelection === 'Rock' || result.playerSelection === 'Paper' && result.computerSelection === 'Paper' || result.playerSelection === 'Scissors' && result.computerSelection === 'Scissors') {
         playerChoiceDiv.textContent = `${result.playerSelection}`
         tieWinOrLose.textContent = 'TIES'
@@ -164,7 +164,11 @@ function resetGame() {
     btnRock.addEventListener('click', handleClickRock)
     btnPaper.addEventListener('click', handleClickPaper)
     btnScissors.addEventListener('click', handleClickScissors)
-
+    playerChoiceDiv.textContent = ''
+    tieWinOrLose.textContent = 'Best of Five'
+    computerChoiceDiv.textContent = ''
+    scoreFieldPlayer.textContent = 0;
+    scoreFieldComputer.textContent = 0;
 }
 
 resetBtn.addEventListener('click', resetGame)

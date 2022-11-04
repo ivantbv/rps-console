@@ -1,15 +1,114 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: arial;
+    margin: 0;
+    background: radial-gradient(circle at 50% center, rgb(244, 118, 118) 21%, rgb(35, 57, 139) 100%, rgb(12, 17, 79) 100%);
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+h3 {
+    margin-top: 0;
+}
+
 .result-container {
+    font-family: arial;
     width: 400px;
-    height: 200px;
-    background: rgba(208, 221, 94, 0.555);
+    height: 142px;
+    background: rgb(255 255 255 / 48%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 900;
+    font-size: 26px;
+    color: #042f54;
+    border: 1px solid;
+    border-radius: 11px;
+}
+
+.result-container p {
+    position: absolute;
+}
+
+.btn:hover {
+    background: #85a9bb;
+    border-radius: 4px;
 }
 
 .btn {
     width: 100px;
 }
 
+.score {
+    font-size: 25px;
+}
+
+.player-selection,
+.computer-selection {
+    border: 2px #17397c solid;
+    border-radius: 8px;
+    padding: 15px 42px;
+    margin-bottom: 10px;
+}
+
 .choiceHighlight {
-    border: rgb(233 96 34) solid 3px;
+    /* border: rgb(233 96 34) solid 3px; */
+    outline: 2px solid rgb(233 96 34);
     background: #ffefda;
     border-radius: 6px;
+}
+
+.reset {
+  background-color: #FFFFFF;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #222222;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,"Helvetica Neue",sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  margin: 0;
+  outline: none;
+  padding: 13px 23px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  touch-action: manipulation;
+  transition: box-shadow .2s,-ms-transform .1s,-webkit-transform .1s,transform .1s;
+  user-select: none;
+  -webkit-user-select: none;
+  width: auto;
+}
+
+.reset:focus-visible {
+  box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
+  transition: box-shadow .2s;
+}
+
+.reset:active {
+  background-color: #F7F7F7;
+  border-color: #000000;
+  transform: scale(.96);
+}
+
+.reset:disabled {
+  border-color: #DDDDDD;
+  color: #DDDDDD;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+.tieWinOrLose {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
 }
